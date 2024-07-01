@@ -1,3 +1,4 @@
+package-lock.json
 node_modules
 .env
 
@@ -18,3 +19,4 @@ ignition/deployments/chain-31337
 
 # Application logs
 /logs
+node_modules

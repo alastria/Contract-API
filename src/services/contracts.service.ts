@@ -1,18 +1,15 @@
 import {
   BaseContract,
-  BaseWallet,
   ContractMethod,
   ContractMethodArgs,
-  ContractRunner,
   ContractTransactionReceipt,
   ContractTransactionResponse,
   FetchRequest,
   Fragment,
   FunctionFragment,
-  HDNodeWallet,
   Interface,
+  Signer,
   TransactionRequest,
-  Wallet,
   ethers,
   getAddress
 } from 'ethers';
@@ -28,7 +25,7 @@ import Config from '../types/Config.type';
 let config: Config;
 let logger: Logger;
 let contracts: ContractCollection;
-let wallet: BaseWallet;
+let signer: Signer;
 
 export function getContract(contractName: string): Contract {
   const contract: Contract | undefined = contracts[contractName];
@@ -44,9 +41,6 @@ export async function getContractInstance(contractName: string, contractAddress:
   const contract: Contract = getContract(contractName);
   const address: string = getAddress(contractAddress);
 
-  let fetch = new FetchRequest(config.NETWORK.URL);
-  fetch.setHeader('X-APIkey', config.NETWORK.API_KEY);
-  const signer = wallet.connect(new ethers.JsonRpcProvider(fetch));
   const contractInstance: BaseContract = new ethers.Contract(address, contract.abi, signer);
   const bytecode: string | null = await contractInstance.getDeployedCode();
 
@@ -143,5 +137,7 @@ export async function initContractsService(_logger: Logger, _contracts: Contract
   logger = _logger;
   contracts = _contracts;
   config = _config;
-  wallet = new ethers.Wallet(config.NETWORK.WALLET_PRIV_KEY);
+  let fetch = new FetchRequest(config.NETWORK.URL);
+  fetch.setHeader('X-APIkey', config.NETWORK.API_KEY);
+  signer = new ethers.Wallet(config.NETWORK.WALLET_PRIV_KEY).connect(new ethers.JsonRpcProvider(fetch));
 }
