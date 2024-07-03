@@ -1,0 +1,29 @@
+// SPDX-License-Identifier: MIT
+// Alastria Contracts (last updated v0.0.1) (token/ERC721/ERC721.sol)
+
+pragma solidity ^0.8.24;
+
+import {ERC721} from "../../../OpenZeppelin/token/ERC721/ERC721.sol";
+import {ERC721Enumerable} from "../../../OpenZeppelin/token/ERC721/extensions/ERC721Enumerable.sol";
+import {Ownable} from "../../../OpenZeppelin/access/Ownable.sol";
+
+contract AlastriaERC721 is ERC721Enumerable, Ownable {
+    constructor(string memory name, string memory symbol) ERC721(name, symbol) Ownable(_msgSender()) {
+    }
+
+    function mint(uint256 tokenId) public onlyOwner {
+        mintTo(_msgSender(), tokenId);
+    }
+
+    function mintTo(address to, uint256 tokenId) public onlyOwner {
+        super._safeMint(to, tokenId);
+    }
+
+    function burn(uint256 tokenId) public onlyOwner {
+        super._burn(tokenId);
+    }
+
+    function transfer(address to, uint256 tokenId) public {
+        super.safeTransferFrom(_msgSender(), to, tokenId);
+    }
+}
