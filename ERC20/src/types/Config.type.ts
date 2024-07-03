@@ -3,6 +3,6 @@ export default interface Config {
   PORT: number;
   CONTRACTS_FILE: string;
   CONTRACT: { NAME: string, ADDRESS: string }
-  NETWORK: { URL: string; API_KEY: string; WALLET_PRIV_KEY: string };
+  NETWORK: { URL: string; WALLET_PRIV_KEY: string };
   LOG_LEVELS: { LOG_LEVEL_SYSTEM: string; LOG_LEVEL_FILE: string };
 }

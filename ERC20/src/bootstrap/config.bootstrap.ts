@@ -16,7 +16,6 @@ export function initConfig(configPath: string): Config {
   config.CONTRACT.ADDRESS = process.env.CONTRACT_ADDRESS || config.CONTRACT.ADDRESS || '';
   config.NETWORK = config.NETWORK || {};
   config.NETWORK.URL = process.env.NETWORK_URL || config.NETWORK.URL || '';
-  config.NETWORK.API_KEY = process.env.NETWORK_API_KEY || config.NETWORK.API_KEY || '';
   config.NETWORK.WALLET_PRIV_KEY = process.env.NETWORK_WALLET_PRIV_KEY || config.NETWORK.WALLET_PRIV_KEY || '';
   config.LOG_LEVELS.LOG_LEVEL_SYSTEM = process.env.LOG_LEVEL_SYSTEM || config.LOG_LEVELS.LOG_LEVEL_SYSTEM || "debug";
   config.LOG_LEVELS.LOG_LEVEL_FILE = process.env.LOG_LEVEL_FILE || config.LOG_LEVELS.LOG_LEVEL_FILE || "info";

@@ -137,7 +137,5 @@ export async function initContractsService(_logger: Logger, _contracts: Contract
   logger = _logger;
   contracts = _contracts;
   config = _config;
-  let fetch = new FetchRequest(config.NETWORK.URL);
-  fetch.setHeader('X-APIkey', config.NETWORK.API_KEY);
-  signer = new ethers.Wallet(config.NETWORK.WALLET_PRIV_KEY).connect(new ethers.JsonRpcProvider(fetch));
+  signer = new ethers.Wallet(config.NETWORK.WALLET_PRIV_KEY).connect(new ethers.JsonRpcProvider(config.NETWORK.URL));
 }
