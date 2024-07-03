@@ -1,6 +1,6 @@
 import express, { Express, Request, Response } from "express";
 
-import { callContractMethodController, executeContractMethodController } from "../controllers/contract.controller";
+import { callContractMethodController, executeContractMethodController, getTokensOfWallet } from "../controllers/contract.controller";
 import handleControllerCall from "../controllers";
 
 import Logger from "../../helpers/logger.helper";
@@ -15,11 +15,9 @@ app.use(apiKeyMiddleware);
 let logger: Logger;
 let config: Config;
 
-app.get("/:contractName/:contractAddress/:method", async (req: Request, res: Response) => {
-  const contractName: string = req.params.contractName;
-  const contractAddress: string = req.params.contractAddress;
+app.get("/:method", async (req: Request, res: Response) => {
   const methodName: string = req.params.method;
-  const requestMade: string = `GET /${contractName}/${contractAddress}/${methodName}`;
+  const requestMade: string = `GET /${methodName}`;
 
   logger.info(requestMade);
   logger.debug(`${requestMade} ${JSON.stringify(req.headers)} ${JSON.stringify(req.query)} ${JSON.stringify(req.body)}`);
@@ -27,11 +25,9 @@ app.get("/:contractName/:contractAddress/:method", async (req: Request, res: Res
   await handleControllerCall(req, res, logger, callContractMethodController);
 });
 
-app.post("/:contractName/:contractAddress/:method", async (req: Request, res: Response) => {
-  const contractName: string = req.params.contractName;
-  const contractAddress: string = req.params.contractAddress;
+app.post("/:method", async (req: Request, res: Response) => {
   const methodName: string = req.params.method;
-  const requestMade: string = `POST /${contractName}/${contractAddress}/${methodName}`;
+  const requestMade: string = `POST /${methodName}`;
 
   logger.info(requestMade);
   logger.debug(`${requestMade} ${JSON.stringify(req.headers)} ${JSON.stringify(req.query)} ${JSON.stringify(req.body)}`);

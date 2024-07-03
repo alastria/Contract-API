@@ -1,7 +1,3 @@
-# Circuloos Token Contracts
+# Tokenization Contract API
 
-You can deploy this service by simply running the following commands:
-```sh
-docker build . -t circuloos-token-contracts
-docker run -d -p 3000:3000 --name circuloos-token-contracts circuloos-token-contracts
-```
+This repository has 2 ExpressJS API projects, one for ERC20 and the other for ERC721.

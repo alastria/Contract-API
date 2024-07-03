@@ -1,3 +1,4 @@
+import dotenvx from "@dotenvx/dotenvx";
 import { startDefaultLogger, logger } from "./helpers/logger.helper";
 import { initContractsService } from "./services/contracts.service";
 import { loadAllContracts } from "./bootstrap/contract.bootstrap";
@@ -15,6 +16,7 @@ import api from "./exposition/api/api";
  * Initialize the application
  */
 async function startApp() {
+  dotenvx.config();
   startDefaultLogger();
 
   logger.info("STARTING APPLICATION");
@@ -27,7 +29,7 @@ async function startApp() {
     const contracts = await loadAllContracts(config, logger);
 
     logger.info('INITIALIZING CONTROLLERS');
-    initContractController(logger);
+    initContractController(logger, config);
 
     logger.info(`INITIALIZING SERVICES`);
     initContractsService(logger, contracts, config);
