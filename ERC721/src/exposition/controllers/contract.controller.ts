@@ -1,4 +1,4 @@
-import { ContractTransactionReceipt, ContractTransactionResponse, TransactionRequest } from "ethers";
+import { ContractTransactionReceipt, ContractTransactionResponse, Overrides, TransactionRequest } from "ethers";
 import { Request } from "express";
 
 import { callContractMethod, executeContractMethod } from "../../services/contracts.service";
@@ -13,7 +13,7 @@ export async function getTokensOfWallet(req: Request): Promise<AppResult> {
   const contractName: string = config.CONTRACT.NAME;
   const contractAddress: string = config.CONTRACT.ADDRESS;
   const walletAddress: string = req.params.walletAddress;
-  const options: TransactionRequest = req.body.options || {};
+  const options: Overrides = req.body.options || {};
   
   const balanceOfMethod: string = 'balanceOf';
   const balanceOfArgs: any[] = [walletAddress];
@@ -57,7 +57,7 @@ export async function callContractMethodController(req: Request): Promise<AppRes
   const contractAddress: string = config.CONTRACT.ADDRESS;
   const methodName: string = req.params.method;
   const args: any[] = req.body.args || [];
-  const options: TransactionRequest = req.body.options || {};
+  const options: Overrides = req.body.options || {};
 
   const result: any = await callContractMethod(contractName, contractAddress, methodName, args, options);
 
@@ -75,7 +75,7 @@ export async function executeContractMethodController(req: Request): Promise<App
   const contractAddress: string = config.CONTRACT.ADDRESS;
   const methodName: string = req.params.method;
   const args: any[] = req.body.args || [];
-  const options: TransactionRequest = req.body.options || {};
+  const options: Overrides = req.body.options || {};
 
   const result: ContractTransactionResponse | ContractTransactionReceipt | null = await executeContractMethod(contractName, contractAddress, methodName, args, options);
 

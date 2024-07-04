@@ -7,8 +7,9 @@ import {
   Fragment,
   FunctionFragment,
   Interface,
+  Overrides,
   Signer,
-  TransactionRequest,
+  Typed,
   ethers,
   getAddress
 } from 'ethers';
@@ -58,7 +59,8 @@ export async function getContractMethod(
 
   try {
     const matchingFuncs = contractInstance.getFunction(methodName);
-    const matchingFragment: FunctionFragment = matchingFuncs.getFragment(...args);
+    const emptyOptions: Typed = Typed.from('overrides', {});
+    const matchingFragment: FunctionFragment = matchingFuncs.getFragment(...args, emptyOptions);
     const fragmentName = matchingFragment.name;
     const fragmentParams = matchingFragment.inputs.map((input) => input.type).join(',');
     return contractInstance.getFunction(`${fragmentName}(${fragmentParams})`);
@@ -101,8 +103,8 @@ export async function callContractMethod(
   contractAddress: string,
   methodName: string,
   args: any[],
-  options: TransactionRequest
-): Promise<any> {
+  options: Overrides
+): Promise<any> {``
   const func: ContractMethod = await getContractMethod(contractName, contractAddress, methodName, args);
   let result: any = await func(...args, options);
   if (result.toObject instanceof Function) {
@@ -117,7 +119,7 @@ export async function executeContractMethod(
   contractAddress: string,
   methodName: string,
   args: any[],
-  options: TransactionRequest
+  options: Overrides
 ): Promise<ContractTransactionResponse | ContractTransactionReceipt | null> {
   const func: ContractMethod = await getContractMethod(contractName, contractAddress, methodName, args);
   let executeTransaction: ContractTransactionResponse = await func(...args, options);
