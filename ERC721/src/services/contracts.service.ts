@@ -4,7 +4,6 @@ import {
   ContractMethodArgs,
   ContractTransactionReceipt,
   ContractTransactionResponse,
-  FetchRequest,
   Fragment,
   FunctionFragment,
   Interface,
@@ -58,9 +57,11 @@ export async function getContractMethod(
   const contractInstance: BaseContract = await getContractInstance(contractName, contractAddress);
 
   try {
-    const func = contractInstance.getFunction(methodName);
-    func.getFragment(...args);
-    return func;
+    const matchingFuncs = contractInstance.getFunction(methodName);
+    const matchingFragment: FunctionFragment = matchingFuncs.getFragment(...args);
+    const fragmentName = matchingFragment.name;
+    const fragmentParams = matchingFragment.inputs.map((input) => input.type).join(',');
+    return contractInstance.getFunction(`${fragmentName}(${fragmentParams})`);
   } catch (exception: any) {
     logger.error(exception);
     throw new ContractMethodNotFoundException(
