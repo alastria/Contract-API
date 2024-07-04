@@ -340,12 +340,12 @@
 							}
 						},
 						"url": {
-							"raw": "{{host}}/tokenOfOwnerByIndex",
+							"raw": "{{host}}/tokenByIndex",
 							"host": [
 								"{{host}}"
 							],
 							"path": [
-								"tokenOfOwnerByIndex"
+								"tokenByIndex"
 							]
 						}
 					},
@@ -357,33 +357,7 @@
 			"name": "AlastriaERC721 Methods",
 			"item": [
 				{
-					"name": "Mint a new token to your wallet",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"args\": [\n        0\n    ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{host}}/mint",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"mint"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Mint a new token to someone's wallet",
+					"name": "Mint a new token to a specific wallet",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -429,32 +403,6 @@
 							],
 							"path": [
 								"burn"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "Transfer token from your wallet to another wallet",
-					"request": {
-						"method": "POST",
-						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"args\": [\n        \"0x0000000000000000000000000000000000000000\",\n        0\n    ]\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
-						"url": {
-							"raw": "{{host}}/transfer",
-							"host": [
-								"{{host}}"
-							],
-							"path": [
-								"transfer"
 							]
 						}
 					},
