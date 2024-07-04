@@ -303,7 +303,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"args\": [\n        \"0x0000000000000000000000000000000000000000\",\n        0\n    ]\n}",
+							"raw": "{\n    \"args\": [\n        \"0x0000000000000000000000000000000000000001\",\n        0\n    ]\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -469,12 +469,12 @@
 	"variable": [
 		{
 			"key": "host",
-			"value": "",
+			"value": "http://localhost:3000",
 			"type": "string"
 		},
 		{
 			"key": "api-key",
-			"value": "",
+			"value": "EXAMPLE-KEY-CHANGE-IT-IN-CURRENT-VALUE",
 			"type": "string"
 		}
 	]
