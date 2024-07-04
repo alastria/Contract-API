@@ -354,7 +354,7 @@
 			]
 		},
 		{
-			"name": "AlastriaERC721 Methods",
+			"name": "ERC721 Methods",
 			"item": [
 				{
 					"name": "Mint a new token to a specific wallet",
