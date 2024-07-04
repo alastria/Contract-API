@@ -26,3 +26,5 @@ docker run -d -p 3000:3000 ERC721API
 ```
 
 Once you have started your project, you can then call any of the documented endpoints at `http://localhost:3000`
+
+The documentation for all of the endpoints in this project is included in [/ERC721/docs](https://github.com/alastria/Contract-API/blob/main/ERC721/docs)
