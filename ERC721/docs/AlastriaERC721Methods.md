@@ -1,4 +1,4 @@
-# AlastriaERC721 Methods
+# ERC721 Methods
 
 [Get the collection name](#get-the-collection-name)
 [Get the collection symbol](#get-the-collection-symbol)
