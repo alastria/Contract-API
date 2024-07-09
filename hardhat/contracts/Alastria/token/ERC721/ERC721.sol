@@ -7,7 +7,7 @@ import {ERC721} from "../../../OpenZeppelin/token/ERC721/ERC721.sol";
 import {ERC721Enumerable} from "../../../OpenZeppelin/token/ERC721/extensions/ERC721Enumerable.sol";
 import {Ownable} from "../../../OpenZeppelin/access/Ownable.sol";
 
-contract AlastriaERC721 is ERC721Enumerable, Ownable {
+contract ERC721MintableAndBurnable is ERC721Enumerable, Ownable {
     constructor(string memory name, string memory symbol) ERC721(name, symbol) Ownable(_msgSender()) {
     }
 

@@ -12,7 +12,7 @@ struct ERC721Data {
   uint256 number;
 }
 
-contract AlastriaERC721StructData is ERC721Enumerable, Ownable {
+contract ERC721WithStructData is ERC721Enumerable, Ownable {
     mapping (uint256 => ERC721Data) tokenData;
 
     constructor(string memory name, string memory symbol) ERC721(name, symbol) Ownable(_msgSender()) {
