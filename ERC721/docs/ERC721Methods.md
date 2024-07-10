@@ -1,8 +1,8 @@
-# ERC721MintableAndBurnable Methods
+# ERC721 Methods
 
-[Get the collection name](#get-the-collection-name)
-[Get the collection symbol](#get-the-collection-symbol)
-[Get a token's URI](#get-a-tokens-uri)
+[Mint a new token to a specific wallet](#mint-a-new-token-to-a-specific-wallet)
+[Burn a token](#burn-a-token)
+[Get all tokens a wallet owns](#get-all-tokens-a-wallet-owns)
 
 ## Mint a new token to a specific wallet
 Mints tokenId, transfers it to to and checks for to acceptance.
