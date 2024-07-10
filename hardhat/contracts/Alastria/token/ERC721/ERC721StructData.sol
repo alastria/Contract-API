@@ -41,7 +41,7 @@ contract ERC721WithStructData is ERC721Enumerable, Ownable {
     }
 
     function updateData(uint256 tokenId, ERC721Data memory data) public {
-        require(_msgSender() == owner() || ownerOf(tokenId) == _msgSender(), "AlastriaERC721StructDataError: Cannot update data of token not owned by us.");
+        require(_msgSender() == owner() || ownerOf(tokenId) == _msgSender(), "ERC721WithStructDataError: Cannot update data of token not owned by the caller.");
         tokenData[tokenId] = data;
     }
 }

@@ -1,7 +1,7 @@
 {
   "contracts": [
     {
-      "name": "AlastriaERC721",
+      "name": "ERC721MintableAndBurnable",
       "abi": [
         {
           "inputs": [
