@@ -18,8 +18,8 @@ npm start
 
 ### Docker
 ```sh
-docker build . -t ERC20API
-docker run -d -p 3000:3000 ERC20API
+docker build . -t erc20api
+docker run -d -p 3000:3000 erc20api
 ```
 
 # ERC721
@@ -38,8 +38,8 @@ npm start
 
 ### Docker
 ```sh
-docker build . -t ERC721API
-docker run -d -p 3000:3000 ERC721API
+docker build . -t erc721api
+docker run -d -p 3000:3000 erc721api
 ```
 
 Once you have started your project, you can then call any of the documented endpoints at `http://localhost:3000`
