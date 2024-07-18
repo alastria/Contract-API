@@ -353,15 +353,15 @@
           "type": "function"
         },
         {
-          "inputs": [
+          "inputs": [],
+          "name": "mint",
+          "outputs": [
             {
               "internalType": "uint256",
-              "name": "tokenId",
+              "name": "",
               "type": "uint256"
             }
           ],
-          "name": "mint",
-          "outputs": [],
           "stateMutability": "nonpayable",
           "type": "function"
         },
@@ -371,15 +371,16 @@
               "internalType": "address",
               "name": "to",
               "type": "address"
-            },
-            {
-              "internalType": "uint256",
-              "name": "tokenId",
-              "type": "uint256"
             }
           ],
           "name": "mintTo",
-          "outputs": [],
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
           "stateMutability": "nonpayable",
           "type": "function"
         },

@@ -1,4 +1,7 @@
 {
+  "engines": {
+    "node": ">=20.13.1"
+  },
   "scripts": {
     "start": "npx ts-node src/main.ts"
   },
@@ -13,11 +16,5 @@
     "ts-node": "10.9.2",
     "typescript": "5.4.5",
     "yaml": "2.4.2"
-  },
-  "devDependencies": {
-    "@types/chai": "^4.3.16",
-    "@types/mocha": "^10.0.6",
-    "chai": "^5.1.1",
-    "mocha": "^10.4.0"
   }
 }
