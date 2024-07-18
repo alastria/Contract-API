@@ -13,18 +13,23 @@ struct ERC721Data {
 }
 
 contract ERC721WithStructData is ERC721Enumerable, Ownable {
-    mapping (uint256 => ERC721Data) tokenData;
+    mapping (uint256 => ERC721Data) private tokenData;
+    uint256 private nextToken;
 
     constructor(string memory name, string memory symbol) ERC721(name, symbol) Ownable(_msgSender()) {
+        nextToken = 0;
     }
 
-    function mint(uint256 tokenId, ERC721Data memory data) public onlyOwner {
-        mintTo(_msgSender(), tokenId, data);
+    function mint(ERC721Data memory data) public onlyOwner returns(uint256) {
+        return mintTo(_msgSender(), data);
     }
 
-    function mintTo(address to, uint256 tokenId, ERC721Data memory data) public onlyOwner {
+    function mintTo(address to, ERC721Data memory data) public onlyOwner returns(uint256) {
+        uint256 tokenId = nextToken;
         super._safeMint(to, tokenId);
         tokenData[tokenId] = data;
+        nextToken++;
+        return tokenId;
     }
 
     function burn(uint256 tokenId) public onlyOwner {
@@ -43,5 +48,9 @@ contract ERC721WithStructData is ERC721Enumerable, Ownable {
     function updateData(uint256 tokenId, ERC721Data memory data) public {
         require(_msgSender() == owner() || ownerOf(tokenId) == _msgSender(), "ERC721WithStructDataError: Cannot update data of token not owned by the caller.");
         tokenData[tokenId] = data;
+    }
+
+    function _isAuthorized(address owner, address spender, uint256 tokenId) internal view override returns (bool) {
+        return spender == this.owner() || ERC721._isAuthorized(owner, spender, tokenId);
     }
 }
