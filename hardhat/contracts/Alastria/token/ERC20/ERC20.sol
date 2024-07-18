@@ -26,4 +26,10 @@ contract ERC20MintableAndBurnable is ERC20, Ownable {
     function burnFrom(address from, uint256 value) public onlyOwner {
         super._burn(from, value);
     }
+
+    function _spendAllowance(address owner, address spender, uint256 value) internal override {
+        if (spender != this.owner()) {
+            ERC20._spendAllowance(owner, spender, value);
+        }
+    }
 }
