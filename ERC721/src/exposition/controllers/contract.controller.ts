@@ -77,12 +77,23 @@ export async function executeContractMethodController(req: Request): Promise<App
   const args: any[] = req.body.args || [];
   const options: Overrides = req.body.options || {};
 
-  const result: ContractTransactionResponse | ContractTransactionReceipt | null = await executeContractMethod(contractName, contractAddress, methodName, args, options);
+  let response: ContractTransactionResponse | ContractTransactionReceipt | null = await executeContractMethod(contractName, contractAddress, methodName, args, options);
+
+  let result: any = response;
+
+  if ((methodName === "mint" || methodName === "mintTo") && response instanceof ContractTransactionReceipt) {
+    let tokenId = null;
+    tokenId = BigInt(response.logs[0].topics[3]).toString();
+    result = {
+      tokenId,
+      transactionReceipt: response
+    }
+  }
 
   return {
     statusCode: 201,
     body: {
-      message: result instanceof ContractTransactionReceipt ? 'Transaction executed' : 'Transacion processed',
+      message: response instanceof ContractTransactionReceipt ? 'Transaction executed' : 'Transacion processed',
       result
     }
   }
