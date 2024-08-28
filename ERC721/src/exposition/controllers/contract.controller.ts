@@ -11,7 +11,7 @@ let logger: Logger;
 
 export async function getTokensOfWallet(req: Request): Promise<AppResult> {
   const contractName: string = config.CONTRACT.NAME;
-  const contractAddress: string = config.CONTRACT.ADDRESS;
+  const contractAddress: string = config.CONTRACT.ADDRESS || req.params.address;
   const walletAddress: string = req.params.walletAddress;
   const options: Overrides = req.body.options || {};
   
@@ -54,7 +54,7 @@ export async function getTokensOfWallet(req: Request): Promise<AppResult> {
 
 export async function callContractMethodController(req: Request): Promise<AppResult> {
   const contractName: string = config.CONTRACT.NAME;
-  const contractAddress: string = config.CONTRACT.ADDRESS;
+  const contractAddress: string = config.CONTRACT.ADDRESS || req.params.address;
   const methodName: string = req.params.method;
   const args: any[] = req.body.args || [];
   const options: Overrides = req.body.options || {};
@@ -72,7 +72,7 @@ export async function callContractMethodController(req: Request): Promise<AppRes
 
 export async function executeContractMethodController(req: Request): Promise<AppResult> {
   const contractName: string = config.CONTRACT.NAME;
-  const contractAddress: string = config.CONTRACT.ADDRESS;
+  const contractAddress: string = config.CONTRACT.ADDRESS || req.params.address;
   const methodName: string = req.params.method;
   const args: any[] = req.body.args || [];
   const options: Overrides = req.body.options || {};

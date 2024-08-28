@@ -5,7 +5,7 @@ This repository has 2 ExpressJS API projects, one for ERC20 and the other for ER
 # ERC20
 This project allows talking to all the OpenZeppelin core implentations of ERC20, as well as the Alastria implementation of ERC20 (which uses OpenZeppelin). The Alastria implementation simply allows to construct an ERC20 token, and exposes the mint and burn methods, but only allows the account that deployed the contract to execute them.
 
-Before running the project, please modify `.env` to connect to the right node.  
+Before running the project, please rename `.env-sample` to `.env` and modify it to connect to the right node.  
 If you have an API Key for our Besu Node, then please place it in this file.
 
 You can start this project locally with either of the following options.
@@ -25,7 +25,7 @@ docker run -d -p 3000:3000 erc20api
 # ERC721
 This project allows talking to all the OpenZeppelin core implementations of ERC721, as well as the Alastria implementation of ERC721 (which uses OpenZeppelin). The Alastria implementation simply allows to construct an ERC721 token, and exposes the mint and burn methods, but only allows the account that deployed the contract to execute them.
 
-Before running the project, please modify `.env` to connect to the right node.  
+Before running the project, please rename `.env-sample` to `.env` and modify it to connect to the right node.  
 If you have an API Key for our Besu Node, then please place it in this file.
 
 You can start this project locally with either of the following options.
