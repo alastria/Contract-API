@@ -60,3 +60,27 @@ If you wish to use an already deployed contract, you will have go get that contr
 For the APIs, you can expose custom endpoints with custom functionality by performing the following changes:
 1. Edit `src/exposition/api/api.ts`, and add and endpoint with ExpressJS using `app.get` for a `GET` endpoint or `app.post` for a `POST` endpoint.  
 Once you have added the endpoint, simply add the business logic for that endpoint in `src/exposition/controllers/contract.controller.ts` by creating a new function, and make sure that this new function is called in `src/exposition/api/api.ts` like the rest of the endpoint implementations there.
+
+## Running Tests
+To run the tests, you need to configure the URL of the node, the private key, and ensure you have the ABI and bytecode for the contracts.
+`ERC20/src/_tests_/contract.service.test.ts` and `ERC721/src/_tests_/contract.service.test.ts`
+
+ beforeAll(() => {
+    logger = new Logger();
+    contracts = {}; // Add your contract collection here
+    config = {
+      NETWORK: {
+        WALLET_PRIV_KEY: 'your-private-key',
+        URL: 'http://localhost:8545'
+      }
+
+Install the necessary dependencies:
+Create a .env file in the api directory (if it doesn't exist) and add the following configuration:
+Update api/contracts.json with the ABI and bytecode of the AccountFactory and Account contracts.
+
+Create the Jest configuration file jest.config.js in the api directory.
+
+### Run the tests:
+```sh
+npx jest
+```
