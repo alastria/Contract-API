@@ -1,10 +1,10 @@
-/** @type import('hardhat/config').HardhatUserConfig */
-import "@nomicfoundation/hardhat-ethers";
+import { HardhatUserConfig } from "hardhat/config";
+import "@nomiclabs/hardhat-ethers";
 import dotenvx from "@dotenvx/dotenvx";
 
 dotenvx.config();
 
-module.exports = {
+const config: HardhatUserConfig = {
   solidity: {
     version: "0.8.24",
     settings: {
@@ -12,10 +12,6 @@ module.exports = {
         enabled: true,
         runs: 10,
       },
-      // Version of the EVM to compile for.
-      // Affects type checking and code generation. Can be homestead,
-      // tangerineWhistle, spuriousDragon, byzantium, constantinople,
-      // petersburg, istanbul, berlin, london, paris, shanghai or cancun (default)
       evmVersion: "berlin",
     },
   },
@@ -30,3 +26,5 @@ module.exports = {
     },
   },
 };
+
+export default config;
